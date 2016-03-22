@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.QueryHint;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -53,7 +54,7 @@ public interface StudentRepo extends JpaRepository<Student, Integer> {
             nativeQuery = true)
     Set<Student> findTeenagerForDepartment(@Param("departmentName") String departmentName);
 
-    Student findByName(String StudentName);
+    List<Student> findByName(String StudentName);
 
     @QueryHints({ @QueryHint(name = "org.hibernate.cacheable", value ="true") })
     @Query(value = "select distinct s.*  from student s, visiting v, groups g " +

@@ -18,7 +18,7 @@ import java.util.List;
 
 @EnableTransactionManagement(proxyTargetClass = true)
 public class AccessDAO<S extends BaseEntity> implements IAccessDAO<S> {
-    protected Logger log = LoggerFactory.getLogger(getClass());
+    private Logger log = LoggerFactory.getLogger(getClass());
 
     private String objectName = "entry";
 
@@ -45,7 +45,7 @@ public class AccessDAO<S extends BaseEntity> implements IAccessDAO<S> {
     }
 
     @Override
-    public void delete(Integer id) throws ExceptionMySQL{
+    public void delete(Long id) throws ExceptionMySQL{
         log.info("Delete one " + objectName + " with id '" + id + "'");
 
         if (!repo.exists(id))
@@ -58,7 +58,7 @@ public class AccessDAO<S extends BaseEntity> implements IAccessDAO<S> {
     }
 
     @Override
-    public S getOne(Integer id) throws ExceptionMySQL{
+    public S getOne(Long id) throws ExceptionMySQL{
         log.info("Finding " + objectName + " with id '{}'", id);
         S s;
         try {

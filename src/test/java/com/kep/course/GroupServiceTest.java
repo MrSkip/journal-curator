@@ -45,13 +45,13 @@ public class GroupServiceTest {
         log.info("all group: {}", groupService.getAll());
 
         try{
-//            Group group = groupService.getOne(2);
+//            Group group = groupService.getByName(2);
             log.info("second: {}", studentRepo.findTeenagerForDepartment("q"));
         }catch (ExceptionMySQL exceptionMySQL){
             System.out.println(exceptionMySQL + "");
         }
 
-//        Group group = groupService.getOne(1);
+//        Group group = groupService.getByName(1);
 //        group.setName("Anna");
 //
 //        groupService.update(group);
@@ -60,7 +60,7 @@ public class GroupServiceTest {
 
 //        ((JpaRepository<Student, Integer>) accessDAO.getRepo()).findAll();
 
-//        Student student = studentRepo.getOne(1);
+//        Student student = studentRepo.getByName(1);
 //        log.info("before : {}", student);
 //
 //        student.setLastName("alolo");
@@ -71,7 +71,7 @@ public class GroupServiceTest {
 //            System.out.println("Sdf");
 //        }
 
-//        log.info("after : {}", studentRepo.getOne(1));
+//        log.info("after : {}", studentRepo.getByName(1));
 
 
 //

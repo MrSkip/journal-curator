@@ -12,8 +12,8 @@ import java.util.List;
 public interface IRestBase<S> {
 
     ResponseEntity<S> update(@RequestBody S s);
-    ResponseEntity delete(@PathVariable Integer id);
-    ResponseEntity<S> getOne(@PathVariable Integer id);
+    ResponseEntity delete(@PathVariable Long id);
+    ResponseEntity<S> getOne(@PathVariable Long id);
     ResponseEntity<List<S>> getAll();
     ResponseEntity<S> save(@RequestBody S s);
 

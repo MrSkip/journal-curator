@@ -9,8 +9,8 @@ import java.util.List;
 public interface IAccessDAO<S> {
 
     S update(S s);
-    void delete(Integer id);
-    S getOne(Integer id);
+    void delete(Long id);
+    S getOne(Long id);
     List<S> getAll();
     S save(S s);
 

@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -77,15 +78,15 @@ public class StudentService extends AccessDAO<Student> implements IStudent {
     }
 
     @Override
-    public Student getOne(String studentName) {
-        log.info("Getting one student with name '{}'",studentName);
+    public List<Student> getByName(String studentName) {
+        log.info("Getting students with name '{}'", studentName);
         return studentRepo.findByName(studentName);
     }
 
     @Override
-    public StudentExtend getFullInformationAboutStudent(String studentName) throws ExceptionMySQL{
-        log.info("Getting full information about student with name '" + studentName + "'");
-        Student student = studentRepo.findByName(studentName);
+    public StudentExtend getFullInformationAboutStudent(Long id) throws ExceptionMySQL{
+        log.info("Getting full information about student with id '" + id + "'");
+        Student student = getOne(id);
         return
                 new StudentExtend(student)
                         .setGroupAndDepartmentNames(student.getGroup().getName(),

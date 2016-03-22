@@ -3,6 +3,7 @@ package com.kep.course.student.service;
 import com.kep.course.student.domain.Student;
 import com.kep.course.student.domain.StudentExtend;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -25,8 +26,8 @@ public interface IStudent {
 
     Set<Student> getStudentsForGroup(String groupName);
 
-    StudentExtend getFullInformationAboutStudent(String studentName);
+    StudentExtend getFullInformationAboutStudent(Long id);
 
-    Student getOne(String name);
+    List<Student> getByName(String name);
 
 }

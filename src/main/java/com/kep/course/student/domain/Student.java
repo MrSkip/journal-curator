@@ -23,11 +23,11 @@ public class Student extends BaseEntity{
     @Id
     @GeneratedValue
     @Column(name = "idStudent")
-    private int id;
+    private Long id;
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "idGroup")
     private Group group;
 
     private String addressOfResidence;
@@ -84,11 +84,11 @@ public class Student extends BaseEntity{
         return this;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

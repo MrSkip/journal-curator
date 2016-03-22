@@ -20,7 +20,7 @@ public class Progress extends BaseEntity{
     @Id
     @GeneratedValue
     @Column(name = "idProgress")
-    private int id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "idStudent")
@@ -51,11 +51,11 @@ public class Progress extends BaseEntity{
         this.kindOfLesson = kindOfLesson;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 /**
@@ -19,12 +20,15 @@ import java.util.List;
  */
 
 public class RestBase<S extends BaseEntity> implements IRestBase<S>{
-    protected Logger log = LoggerFactory.getLogger(getClass());
+    private Logger log = LoggerFactory.getLogger(getClass());
 
     private AccessDAO accessDAO;
+    private String objectName = "entry";
 
     public RestBase(AccessDAO accessDAO){
         this.accessDAO = accessDAO;
+        objectName = ((Class<S>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0])
+                .getSimpleName();
     }
 
     @Override
@@ -33,9 +37,12 @@ public class RestBase<S extends BaseEntity> implements IRestBase<S>{
         S update;
         try {
             update = (S) accessDAO.update(s);
-            if (update == null)
+            if (update == null){
+                log.info("Updated `" + objectName + "` false with id '{}'", s.getId());
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
         } catch (ExceptionMySQL e){
+            log.info("Updated `" + objectName + "` false with id '{}' , error: {}", s.getId(), e.getMessage());
             return ResponseEntity
                     .status(HttpStatus.CONFLICT)
                     .header("MySQL Exception", e.getMessage())
@@ -45,11 +52,12 @@ public class RestBase<S extends BaseEntity> implements IRestBase<S>{
     }
     
     @Override
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity delete(@PathVariable Integer id) {
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity delete(@PathVariable Long id) {
         try {
             accessDAO.delete(id);
         } catch (ExceptionMySQL e){
+            log.info("Deleted `" + objectName + "` false with id '{}' , error: {}", id, e.getMessage());
             return ResponseEntity
                     .status(HttpStatus.CONFLICT)
                     .header("MySQL Exception", e.getMessage())
@@ -60,11 +68,12 @@ public class RestBase<S extends BaseEntity> implements IRestBase<S>{
 
     @Override
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<S> getOne(@PathVariable Integer id) {
+    public ResponseEntity<S> getOne(@PathVariable Long id) {
         S find;
         try {
             find = (S) accessDAO.getOne(id);
         } catch (ExceptionMySQL e){
+            log.info("Not fount `" + objectName + "` with id '{}' , error: {}", id, e.getMessage());
             return ResponseEntity
                     .status(HttpStatus.CONFLICT)
                     .header("MySQL Exception", e.getMessage())
@@ -77,10 +86,12 @@ public class RestBase<S extends BaseEntity> implements IRestBase<S>{
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<S>> getAll() {
         List<S> list = accessDAO.getAll();
-        if (list.isEmpty())
+        if (list.isEmpty()){
+            log.info("Not fount any record in `" + objectName + "`.");
             return ResponseEntity
                     .status(HttpStatus.NO_CONTENT)
                     .body(null);
+        }
         return ResponseEntity.ok(list);
     }
 
@@ -91,6 +102,7 @@ public class RestBase<S extends BaseEntity> implements IRestBase<S>{
         try {
             save = (S) accessDAO.save(s);
         } catch (ExceptionMySQL e){
+            log.info("Not fount `" + objectName + "` with id '{}' , error: {}", s.getId(), e.getMessage());
             return ResponseEntity
                     .status(HttpStatus.CONFLICT)
                     .header("MySQL Exception", e.getMessage())

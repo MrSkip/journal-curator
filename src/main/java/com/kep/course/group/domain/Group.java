@@ -24,7 +24,7 @@ public class Group extends BaseEntity{
     @Id
     @GeneratedValue
     @Column(name = "idGroup")
-    private int id;
+    private Long id;
 
     private String name;
     private String codeOfSpeciality;
@@ -81,11 +81,11 @@ public class Group extends BaseEntity{
         return this;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

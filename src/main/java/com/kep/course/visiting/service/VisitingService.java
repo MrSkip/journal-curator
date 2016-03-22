@@ -27,12 +27,12 @@ public class VisitingService extends AccessDAO<Visiting> {
         this.visitingRepo = visitingRepo;
     }
 
-    Set<Visiting> getWeekVisitingForGroup(String groupName, Date lastWorkDayOfWeek){
+    public Set<Visiting> getWeekVisitingForGroup(String groupName, Date lastWorkDayOfWeek){
         log.info("Getting visiting for group '{}' with last work day of week '{}'", groupName, lastWorkDayOfWeek);
         return visitingRepo.getVisitingForGroup(groupName, lastWorkDayOfWeek);
     }
 
-    Set<Visiting> getMonthVisitingForGroup(String groupName, Date lastDayOfMonth){
+    public Set<Visiting> getMonthVisitingForGroup(String groupName, Date lastDayOfMonth){
         log.info("Getting visiting for group '{}' with last work day of month '{}'", groupName, lastDayOfMonth);
         return visitingRepo.getVisitingForGroup(groupName, lastDayOfMonth);
     }

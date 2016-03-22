@@ -21,7 +21,7 @@ public class Department extends BaseEntity{
     @Id
     @GeneratedValue
     @Column(name = "idDepartment")
-    private int id;
+    private Long id;
     private String name;
     private String pibOfHead;
 
@@ -40,11 +40,11 @@ public class Department extends BaseEntity{
         this.pibOfHead = pibOfHead;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

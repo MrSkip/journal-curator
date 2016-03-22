@@ -7,8 +7,6 @@ package com.kep.course.entity;
 public class BaseEntity {
 
     protected Long id;
-    protected Boolean activity;
-
 
     public Long getId() {
         return id;
@@ -16,13 +14,5 @@ public class BaseEntity {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Boolean getActivity() {
-        return activity;
-    }
-
-    public void setActivity(Boolean activity) {
-        this.activity = activity;
     }
 }
