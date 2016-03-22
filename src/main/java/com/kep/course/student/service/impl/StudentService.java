@@ -1,6 +1,6 @@
 package com.kep.course.student.service.impl;
 
-import com.kep.course.access.AccessDAO;
+import com.kep.course.access.jpa.AccessDAO;
 import com.kep.course.exception.ExceptionMySQL;
 import com.kep.course.group.repository.GroupRepo;
 import com.kep.course.student.domain.Student;

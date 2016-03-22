@@ -1,10 +1,6 @@
 package com.kep.course;
 
-import com.kep.course.access.AccessDAO;
-import com.kep.course.department.domain.Department;
 import com.kep.course.exception.ExceptionMySQL;
-import com.kep.course.group.domain.Group;
-import com.kep.course.student.domain.Student;
 import com.kep.course.department.repository.DepartmentRepo;
 import com.kep.course.department.service.impl.DepartmentService;
 import com.kep.course.group.service.impl.GroupService;
@@ -15,7 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;

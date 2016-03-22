@@ -1,6 +1,6 @@
 package com.kep.course.department.service.impl;
 
-import com.kep.course.access.AccessDAO;
+import com.kep.course.access.jpa.AccessDAO;
 import com.kep.course.department.domain.Department;
 import com.kep.course.department.repository.DepartmentRepo;
 import com.kep.course.department.service.IDepartment;

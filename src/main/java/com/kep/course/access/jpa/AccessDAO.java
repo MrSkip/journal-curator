@@ -1,4 +1,4 @@
-package com.kep.course.access;
+package com.kep.course.access.jpa;
 
 import com.kep.course.entity.BaseEntity;
 import com.kep.course.exception.ExceptionMySQL;
@@ -18,7 +18,7 @@ import java.util.List;
 
 @EnableTransactionManagement(proxyTargetClass = true)
 public class AccessDAO<S extends BaseEntity> implements IAccessDAO<S> {
-    Logger log = LoggerFactory.getLogger(getClass());
+    protected Logger log = LoggerFactory.getLogger(getClass());
 
     private String objectName = "entry";
 

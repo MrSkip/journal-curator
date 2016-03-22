@@ -1,4 +1,4 @@
-package com.kep.course.access;
+package com.kep.course.access.jpa;
 
 import java.util.List;
 

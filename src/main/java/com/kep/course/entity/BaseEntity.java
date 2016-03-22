@@ -5,9 +5,24 @@ package com.kep.course.entity;
  */
 
 public class BaseEntity {
-    int id;
 
-    public int getId() {
+    protected Long id;
+    protected Boolean activity;
+
+
+    public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Boolean getActivity() {
+        return activity;
+    }
+
+    public void setActivity(Boolean activity) {
+        this.activity = activity;
     }
 }

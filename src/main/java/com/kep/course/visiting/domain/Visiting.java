@@ -20,7 +20,7 @@ public class Visiting extends BaseEntity{
     @Id
     @GeneratedValue
     @Column(name = "idVisiting")
-    private int id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "idStudent")
@@ -62,11 +62,13 @@ public class Visiting extends BaseEntity{
         this.reasonOfPass = visiting.reasonOfPass;
     }
 
-    public int getId() {
+    @Override
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    @Override
+    public void setId(Long id) {
         this.id = id;
     }
 

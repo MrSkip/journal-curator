@@ -2,7 +2,7 @@ package com.kep.course.progress.service;
 
 import com.kep.course.group.repository.GroupRepo;
 import com.kep.course.progress.domain.Progress;
-import com.kep.course.access.AccessDAO;
+import com.kep.course.access.jpa.AccessDAO;
 import com.kep.course.progress.repository.ProgressRepo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

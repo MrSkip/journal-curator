@@ -1,7 +1,7 @@
 package com.kep.course.visiting.service;
 
 import com.kep.course.visiting.domain.Visiting;
-import com.kep.course.access.AccessDAO;
+import com.kep.course.access.jpa.AccessDAO;
 import com.kep.course.visiting.repository.VisitingRepo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
