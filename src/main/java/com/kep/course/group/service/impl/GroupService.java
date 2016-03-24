@@ -1,7 +1,6 @@
 package com.kep.course.group.service.impl;
 
 import com.kep.course.access.jpa.AccessDAO;
-import com.kep.course.exception.ExceptionMySQL;
 import com.kep.course.group.domain.Group;
 import com.kep.course.group.repository.GroupRepo;
 import com.kep.course.group.service.IGroup;
@@ -31,12 +30,7 @@ public class GroupService extends AccessDAO<Group> implements IGroup{
     @Override
     public Group getGroup(String name) {
         log.info("Find group with name `{}`", name);
-        Group group = groupRepo.findByName(name);
-
-        if (group == null)
-            throw new ExceptionMySQL("Can`t find group with name '" + name + "'");
-
-        return group;
+        return groupRepo.findByName(name);
     }
 
 }

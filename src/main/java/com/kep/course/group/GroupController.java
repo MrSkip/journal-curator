@@ -28,8 +28,8 @@ public class GroupController extends RestBase<Group> {
         this.groupServe = groupServe;
     }
 
-    @RequestMapping(value = "/{groupName}", method = RequestMethod.GET)
-    public ResponseEntity<Group> getByGroupName(@PathVariable String groupName){
+    @RequestMapping(value = "/name", method = RequestMethod.GET)
+    public ResponseEntity<Group> getByGroupName(@RequestParam String groupName){
         Group group = groupServe.getGroup(groupName);
         if (group == null) {
             log.info("Not find any group with name `{}`", groupName);

@@ -18,6 +18,7 @@ import java.util.List;
 /**
  * by Mr Skip on 17.03.2016.
  */
+
 @RestController
 @RequestMapping("/subject")
 public class SubjectController extends RestBase<Subject> {

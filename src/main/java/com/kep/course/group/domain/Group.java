@@ -1,5 +1,6 @@
 package com.kep.course.group.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.kep.course.department.domain.Department;
 import com.kep.course.entity.BaseEntity;
 import com.kep.course.student.domain.*;
@@ -38,6 +39,7 @@ public class Group extends BaseEntity{
     private Department department;
 
     @OneToMany(mappedBy = "group")
+    @JsonIgnore
     private Set<Student> studentSet;
 
     @ManyToMany

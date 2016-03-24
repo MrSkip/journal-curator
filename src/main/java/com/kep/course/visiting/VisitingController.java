@@ -19,6 +19,7 @@ import java.util.Set;
 /**
  * by Mr Skip on 17.03.2016.
  */
+
 @RestController
 @RequestMapping(value = "/visiting")
 public class VisitingController extends RestBase<Visiting>{
@@ -35,7 +36,7 @@ public class VisitingController extends RestBase<Visiting>{
     @RequestMapping(value = "/week",method = RequestMethod.GET)
     public ResponseEntity<Set<Visiting>> getWeekVisitingForGroup(@RequestParam String groupName, @RequestParam Date date){
         Set<Visiting> set = visitingService.getWeekVisitingForGroup(groupName, date);
-        if (set == null) {
+        if (set == null || set.isEmpty()) {
             log.info("Not find any visiting for group`{}`, with last day of week '{}'", groupName, date);
             return ResponseEntity.status(HttpStatus.NO_CONTENT)
                     .body(null);

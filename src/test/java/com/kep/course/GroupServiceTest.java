@@ -45,7 +45,6 @@ public class GroupServiceTest {
         log.info("all group: {}", groupService.getAll());
 
         try{
-//            Group group = groupService.getByName(2);
             log.info("second: {}", studentRepo.findTeenagerForDepartment("q"));
         }catch (ExceptionMySQL exceptionMySQL){
             System.out.println(exceptionMySQL + "");

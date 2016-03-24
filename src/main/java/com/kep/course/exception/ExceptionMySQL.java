@@ -20,4 +20,9 @@ public class ExceptionMySQL extends RuntimeException{
     public String toString() {
         return exception;
     }
+
+    @Override
+    public String getMessage() {
+        return exception;
+    }
 }
