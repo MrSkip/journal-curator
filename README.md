@@ -30,8 +30,9 @@ From the main window the user must have access to other tables.
 # The main features:
 - MySQL
 - Spring
+- Transaction
 - RESTful
-- JPA (enable caching, annotation with query (native and jpql))
+- JPA (enable caching, annotations with query (native and jpql))
 - All classes entity inherit from the BaseEntity for logging
 - Classes of service inherit from AccessDAO for provide base query to all service like delete, getAll, update etc/
 - Are controller classes inherit from RestBase class for provide to client a basic access on delete, update etc/
