@@ -26,7 +26,7 @@ public interface IStudent {
 
     Set<Student> getStudentsForGroup(String groupName);
 
-    StudentExtend getFullInformationAboutStudent(Long id);
+    List<StudentExtend> getFullInformationAboutStudent(String studentName);
 
     List<Student> getByName(String name);
 

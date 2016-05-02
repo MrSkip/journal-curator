@@ -32,8 +32,8 @@ public class StudentController extends RestBase<Student> implements IStudentCont
     }
 
     @Override
-    @RequestMapping(value = "/{name}",method = RequestMethod.GET)
-    public ResponseEntity<List<Student>> getOne(@PathVariable String name) {
+    @RequestMapping(params = "name",method = RequestMethod.GET)
+    public ResponseEntity<List<Student>> getOne(@RequestParam String name) {
         List<Student> students = studentService.getByName(name);
         if (students == null || students.isEmpty()) {
             log.info("Not find any student for group `{}`", name);
@@ -46,10 +46,10 @@ public class StudentController extends RestBase<Student> implements IStudentCont
 
     @Override
     @RequestMapping(value = "/extend", method = RequestMethod.GET)
-    public ResponseEntity<StudentExtend> getExtendInformationAboutStudent(@RequestParam Long id) {
-        StudentExtend student = studentService.getFullInformationAboutStudent(id);
+    public ResponseEntity<List<StudentExtend>> getExtendInformationAboutStudent(@RequestParam String studentName) {
+        List<StudentExtend> student = studentService.getFullInformationAboutStudent(studentName);
         if (student == null) {
-            log.info("Not find any student with id `{}`", id);
+            log.info("Not find any student with name `{}`", studentName);
             return ResponseEntity.status(HttpStatus.NO_CONTENT)
                     .body(null);
         }

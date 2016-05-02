@@ -12,8 +12,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * by Mr Skip on 10.03.2016.
@@ -84,12 +86,11 @@ public class StudentService extends AccessDAO<Student> implements IStudent {
     }
 
     @Override
-    public StudentExtend getFullInformationAboutStudent(Long id) throws ExceptionMySQL{
-        log.info("Getting full information about student with id '" + id + "'");
-        Student student = getOne(id);
-        return
-                new StudentExtend(student)
-                        .setGroupAndDepartmentNames(student.getGroup().getName(),
-                                student.getGroup().getDepartment().getName());
+    public List<StudentExtend> getFullInformationAboutStudent(String studentName) throws ExceptionMySQL{
+        log.info("Getting full information about student with name '" + studentName + "'");
+        List<Student> student = studentRepo.findByName(studentName);
+        return student.stream().map(student1 -> new StudentExtend(student1)
+                .setGroupAndDepartmentNames(student1.getGroup().getName(),
+                        student1.getGroup().getDepartment().getName())).collect(Collectors.toList());
     }
 }

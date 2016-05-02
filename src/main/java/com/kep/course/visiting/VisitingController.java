@@ -33,11 +33,11 @@ public class VisitingController extends RestBase<Visiting>{
         this.visitingService = visitingService;
     }
 
-    @RequestMapping(value = "/week",method = RequestMethod.GET)
-    public ResponseEntity<Set<Visiting>> getWeekVisitingForGroup(@RequestParam String groupName, @RequestParam Date date){
-        Set<Visiting> set = visitingService.getWeekVisitingForGroup(groupName, date);
+    @RequestMapping(value = "/week", method = RequestMethod.GET)
+    public ResponseEntity<Set<Visiting>> getWeekVisitingForGroup(@RequestParam String groupName){
+        Set<Visiting> set = visitingService.getWeekVisitingForGroup(groupName);
         if (set == null || set.isEmpty()) {
-            log.info("Not find any visiting for group`{}`, with last day of week '{}'", groupName, date);
+            log.info("Not find any visiting for group`{}`", groupName);
             return ResponseEntity.status(HttpStatus.NO_CONTENT)
                     .body(null);
         }
@@ -46,10 +46,10 @@ public class VisitingController extends RestBase<Visiting>{
     }
 
     @RequestMapping(value = "/month",method = RequestMethod.GET)
-    public ResponseEntity<Set<Visiting>> getMonthVisitingForGroup(@RequestParam String groupName, @RequestParam Date date){
-        Set<Visiting> set = visitingService.getMonthVisitingForGroup(groupName, date);
+    public ResponseEntity<Set<Visiting>> getMonthVisitingForGroup(@RequestParam String groupName){
+        Set<Visiting> set = visitingService.getMonthVisitingForGroup(groupName);
         if (set == null) {
-            log.info("Not find any visiting for group`{}`, with last day of mount '{}'", groupName, date);
+            log.info("Not find any visiting for group`{}`", groupName);
             return ResponseEntity.status(HttpStatus.NO_CONTENT)
                     .body(null);
         }

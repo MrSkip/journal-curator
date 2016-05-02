@@ -15,14 +15,16 @@ import java.util.Set;
 
 public interface IStudentController {
 
-    ResponseEntity<Set<Student>> getStudentsWithNegativeMark(@RequestParam String subjectName);
-    ResponseEntity<Set<Student>> getStudentsForPrevention(@RequestParam String groupName);
-    ResponseEntity<Set<Student>> getTeenagerStudentsForDepartment(@PathVariable String departmentName);
-    ResponseEntity<Set<Student>> getStudentsWithBenefitForDepartment(@PathVariable String departmentName);
-    ResponseEntity<Set<Student>> getStudentsWithBenefitForGroup(@PathVariable String groupName);
-    ResponseEntity<Set<Student>> getStudentsWithReprimand();
-    ResponseEntity<Set<Student>> getStudentsForGroup(@PathVariable String groupName);
-    ResponseEntity<StudentExtend> getExtendInformationAboutStudent(@PathVariable Long id);
-    ResponseEntity<List<Student>> getOne(@PathVariable String name);
+    ResponseEntity<Set<Student>> getStudentsWithNegativeMark(@RequestParam String subjectName);// /negative-mark
+    ResponseEntity<Set<Student>> getStudentsForPrevention(@RequestParam String groupName); // /prevention
+
+    ResponseEntity<Set<Student>> getTeenagerStudentsForDepartment(@RequestParam String departmentName); // /teenager-in-department
+    ResponseEntity<Set<Student>> getStudentsWithBenefitForDepartment(@RequestParam String departmentName); // /benefit-in-department
+    ResponseEntity<Set<Student>> getStudentsWithBenefitForGroup(@RequestParam String groupName); // /benefit-in-group
+    ResponseEntity<Set<Student>> getStudentsWithReprimand(); // /reprimand
+    ResponseEntity<Set<Student>> getStudentsForGroup(@RequestParam String groupName); // /group
+
+    ResponseEntity<List<StudentExtend>> getExtendInformationAboutStudent(@RequestParam String studentName); // /extend
+    ResponseEntity<List<Student>> getOne(@PathVariable String name); // /{name}
 
 }

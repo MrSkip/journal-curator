@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Set;
 
@@ -27,12 +28,14 @@ public class VisitingService extends AccessDAO<Visiting> {
         this.visitingRepo = visitingRepo;
     }
 
-    public Set<Visiting> getWeekVisitingForGroup(String groupName, Date lastWorkDayOfWeek){
+    public Set<Visiting> getWeekVisitingForGroup(String groupName){
+        Date lastWorkDayOfWeek = Calendar.getInstance().getTime();
         log.info("Getting visiting for group '{}' with last work day of week '{}'", groupName, lastWorkDayOfWeek);
         return visitingRepo.getVisitingForGroup(groupName, lastWorkDayOfWeek);
     }
 
-    public Set<Visiting> getMonthVisitingForGroup(String groupName, Date lastDayOfMonth){
+    public Set<Visiting> getMonthVisitingForGroup(String groupName){
+        Date lastDayOfMonth = Calendar.getInstance().getTime();
         log.info("Getting visiting for group '{}' with last work day of month '{}'", groupName, lastDayOfMonth);
         return visitingRepo.getVisitingForGroup(groupName, lastDayOfMonth);
     }
